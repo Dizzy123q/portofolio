@@ -159,10 +159,10 @@
   </script>
   <script>
     const video = document.querySelector('video');
-    video.play().catch(() => {
-      video.muted = true;
-      video.play();
-    });
+
+document.addEventListener('touchstart', () => {
+  video.play();
+}, { once: true });
   </script>
   <script src="animate.js"></script>
 </body>
