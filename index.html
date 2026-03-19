@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanganu Andrei Marian</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'JetBrains Mono', monospace; }
+
+  .video-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+  .video-bg video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+  }
+
+  .nav-active {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 0.35rem 0.75rem;
+    color: white;
+  }
+
+  /* Desktop nav */
+  nav {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    background: rgba(6, 16, 32, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Mobile fullscreen menu */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(6, 16, 32, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+</style>
+</head>
+<body class="bg-[#0a1628] text-white min-h-screen overflow-x-hidden">
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Desktop Nav -->
+  <nav class="animate fade-down fixed top-0 left-0 right-0 z-50 hidden lg:flex flex-wrap items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold" data-delay="200">
+    <a href="index.html" class="nav-active">&lt;Home&gt;</a>
+    <a href="about.html" class="text-white/80 hover:text-white transition-colors">&lt;About me&gt;</a>
+    <a href="education.html" class="text-white/80 hover:text-white transition-colors">&lt;Education / Certifications&gt;</a>
+    <a href="projects.html" class="text-white/80 hover:text-white transition-colors">&lt;Projects&gt;</a>
+    <a href="get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;get in touch&gt;</a>
+    <div class="flex items-center gap-2 ml-4">
+      <span class="text-white text-sm font-bold">EN</span>
+      <span class="text-white/30 text-sm">|</span>
+      <a href="ro/index.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">RO</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Top Bar -->
+  <div class="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 pt-5 pb-4">
+    <button onclick="toggleMenu()" class="animate-fixed fade-down glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors" data-delay="200">
+      <i class="fa-solid fa-bars text-lg"></i>
+    </button>
+    <span class="animate-fixed fade-down nav-active text-sm font-bold" data-delay="200">&lt;Home&gt;</span>
+  </div>
+
+  <!-- Mobile Fullscreen Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <!-- Close button -->
+    <button onclick="toggleMenu()" class="absolute top-6 left-6 glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+
+    <a href="index.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Home&gt;</a>
+    <a href="about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;About me&gt;</a>
+    <a href="education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Education / Certifications&gt;</a>
+    <a href="projects.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Projects&gt;</a>
+    <a href="get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;get in touch&gt;</a>
+    <div class="absolute bottom-10 flex items-center gap-3">
+      <span class="text-white text-xl font-bold">EN</span>
+      <span class="text-white/30 text-xl">|</span>
+      <a href="ro/index.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">RO</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="relative z-10 min-h-screen flex flex-col justify-center px-6 lg:px-16 xl:px-24">
+    <h1 class="animate fade-up font-bold leading-tight mb-4 text-5xl lg:text-7xl xl:text-8xl" data-delay="0">Hello,<br>I'm Andrei</h1>
+    <p class="animate fade-up text-base lg:text-lg font-bold text-white/70" data-delay="150">Hanganu Andrei Marian</p>
+  </div>
+
+  <!-- Social Buttons -->
+  <div class="fixed bottom-8 right-6 lg:right-16 xl:right-24 z-10 flex flex-row gap-3" >
+    <a href="https://linkedin.com/in/username" target="_blank" class="animate-fixed fade-up glass w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors" data-delay="300">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <a href="https://github.com/username" target="_blank" class="animate-fixed fade-up glass w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors" data-delay="450">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="cv.pdf" download class="animate-fixed fade-up glass w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors" data-delay="600">
+      <i class="fa-solid fa-download"></i>
+    </a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="animate.js"></script>
+</body>
+</html>

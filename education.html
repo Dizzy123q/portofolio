@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education & Certifications - Hanganu Andrei Marian</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'JetBrains Mono', monospace; }
+
+  .video-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+  .video-bg video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+  }
+
+  .glass:hover {
+    background: rgba(255, 255, 255, 0.13);
+    transition: background 0.3s;
+  }
+
+  /* Stepper - doar pe desktop */
+  .stepper-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4) 0px,
+      rgba(255, 255, 255, 0.4) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
+
+  .stepper-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1.5rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-active {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 0.35rem 0.75rem;
+    color: white;
+  }
+
+  nav {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    background: rgba(6, 16, 32, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(6, 16, 32, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+</style>
+</head>
+<body class="bg-[#0a1628] text-white min-h-screen overflow-x-hidden">
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Desktop Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 hidden lg:flex items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold">
+    <a href="index.html" class="text-white/80 hover:text-white transition-colors">&lt;Home&gt;</a>
+    <a href="about.html" class="text-white/80 hover:text-white transition-colors">&lt;About me&gt;</a>
+    <a href="education.html" class="nav-active">&lt;Education / Certifications&gt;</a>
+    <a href="projects.html" class="text-white/80 hover:text-white transition-colors">&lt;Projects&gt;</a>
+    <a href="get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;get in touch&gt;</a>
+    <div class="flex items-center gap-2 ml-4">
+      <span class="text-white text-sm font-bold">EN</span>
+      <span class="text-white/30 text-sm">|</span>
+      <a href="ro/index.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">RO</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Top Bar -->
+  <div class="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 pt-5 pb-4">
+    <button onclick="toggleMenu()" class="glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+      <i class="fa-solid fa-bars text-lg"></i>
+    </button>
+    <span class="nav-active text-sm font-bold">&lt;Education / Certifications&gt;</span>
+  </div>
+
+  <!-- Mobile Fullscreen Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button onclick="toggleMenu()" class="absolute top-6 left-6 glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+    <a href="index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Home&gt;</a>
+    <a href="about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;About me&gt;</a>
+    <a href="education.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Education&gt;</a>
+    <a href="projects.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Projects&gt;</a>
+    <a href="get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;get in touch&gt;</a>
+    <div class="absolute bottom-10 flex items-center gap-3">
+      <span class="text-white text-xl font-bold">EN</span>
+      <span class="text-white/30 text-xl">|</span>
+      <a href="ro/index.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">RO</a>
+    </div>
+  </div>
+
+  <div class="relative z-10 px-6 lg:px-16 xl:px-24 pt-28 pb-16 max-w-6xl mx-auto">
+
+    <h2 class="text-2xl lg:text-3xl font-bold mb-10 lg:mb-16">&lt;Education&gt;</h2>
+
+    <!-- Mobile: carduri verticale -->
+    <div class="flex flex-col gap-6 lg:hidden mb-16">
+      <div class="glass p-6 w-full">
+        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Facultatea</p>
+        <h3 class="text-lg font-bold mb-1">Facultatea de Informatică</h3>
+        <p class="text-sm text-white/60 mb-1">Universitatea Alexandru Ioan Cuza</p>
+        <p class="text-xs text-white/40 mb-4">2020 — 2023</p>
+        <a href="#" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+          → Graduation project
+        </a>
+      </div>
+      <div class="glass p-6 w-full">
+        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Facultatea</p>
+        <h3 class="text-lg font-bold mb-1">Facultatea de Informatică</h3>
+        <p class="text-sm text-white/60 mb-1">Universitatea Alexandru Ioan Cuza</p>
+        <p class="text-xs text-white/40 mb-4">2023 — prezent</p>
+        <a href="#" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+          → Graduation project
+        </a>
+      </div>
+    </div>
+
+    <!-- Desktop: stepper -->
+    <div class="relative hidden lg:block">
+      <div class="stepper-line"></div>
+
+      <div class="relative flex items-start mb-16">
+        <div class="w-1/2 pr-12 flex justify-end">
+          <div class="glass p-6 max-w-sm w-full">
+            <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Facultatea</p>
+            <h3 class="text-lg font-bold mb-1">Facultatea de Informatică</h3>
+            <p class="text-sm text-white/60 mb-1">Universitatea Alexandru Ioan Cuza</p>
+            <p class="text-xs text-white/40 mb-4">2020 — 2023</p>
+            <a href="#" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+              → Graduation project
+            </a>
+          </div>
+        </div>
+        <div class="stepper-dot"></div>
+        <div class="w-1/2 pl-12"></div>
+      </div>
+
+      <div class="relative flex items-start mb-16">
+        <div class="w-1/2 pr-12"></div>
+        <div class="stepper-dot"></div>
+        <div class="w-1/2 pl-12">
+          <div class="glass p-6 max-w-sm w-full">
+            <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Facultatea</p>
+            <h3 class="text-lg font-bold mb-1">Facultatea de Informatică</h3>
+            <p class="text-sm text-white/60 mb-1">Universitatea Alexandru Ioan Cuza</p>
+            <p class="text-xs text-white/40 mb-4">2023 — prezent</p>
+            <a href="#" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+              → Graduation project
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <h2 class="text-2xl lg:text-3xl font-bold mb-10 mt-8">&lt;Certifications&gt;</h2>
+    <div class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center gap-6">
+
+      <div class="glass p-6 w-full lg:w-96">
+        <p class="text-xs text-white/40 uppercase tracking-widest mb-2">Digital Nation</p>
+        <h3 class="text-base font-bold mb-1">Nume Certificare</h3>
+        <p class="text-xs text-white/40 mb-4">2023</p>
+        <a href="certificates/digital-nation.pdf" target="_blank" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+          → View certification
+        </a>
+      </div>
+
+      <div class="glass p-6 w-full lg:w-96">
+        <p class="text-xs text-white/40 uppercase tracking-widest mb-2">Red Hat</p>
+        <h3 class="text-base font-bold mb-1">Nume Certificare</h3>
+        <p class="text-xs text-white/40 mb-4">2024</p>
+        <a href="certificates/redhat.pdf" target="_blank" class="text-xs text-white/60 hover:text-white border-b border-white/30 hover:border-white transition-colors">
+          → View certification
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+
+</body>
+</html>
