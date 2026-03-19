@@ -279,6 +279,13 @@
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
     }
   </script>
+ <script>
+    const video = document.querySelector('video');
+     
+     document.addEventListener('touchstart', () => {
+       video.play();
+     }, { once: true });
+  </script>
 <script src="animate.js"></script>
 </body>
 </html>
