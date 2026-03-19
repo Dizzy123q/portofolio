@@ -156,6 +156,13 @@
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
     }
   </script>
+  <script>
+    const video = document.querySelector('video');
+    video.play().catch(() => {
+      video.muted = true;
+      video.play();
+    });
+  </script>
   <script src="animate.js"></script>
 </body>
 </html>
