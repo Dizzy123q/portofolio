@@ -86,11 +86,12 @@
 </head>
 <body class="bg-[#0a1628] text-white min-h-screen overflow-x-hidden">
 
-  <video id="bgVideo" autoplay muted loop playsinline preload="auto">
-    <source src="video.webm" type="video/webm">
-    <source src="video.mp4" type="video/mp4">
-  </video>
-  
+    <div class="video-bg">
+    <video id="bgVideo" autoplay muted loop playsinline preload="auto">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <!-- Desktop Nav -->
   <nav class="animate fade-down fixed top-0 left-0 right-0 z-50 hidden lg:flex flex-wrap items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold" data-delay="200">
     <a href="index.html" class="nav-active">&lt;Home&gt;</a>
