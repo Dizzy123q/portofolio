@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Linux - Hanganu Andrei Marian</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'JetBrains Mono', monospace; }
+
+  .video-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+  .video-bg video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+  }
+
+  .nav-active {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 0.35rem 0.75rem;
+    color: white;
+  }
+
+  nav {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    background: rgba(6, 16, 32, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(6, 16, 32, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+</style>
+</head>
+<body class="bg-[#0a1628] text-white min-h-screen overflow-x-hidden">
+
+  <div class="video-bg">
+    <video id="bgVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+
+      <source src="../video.mp4" type="video/mp4">
+      <source src="../video.webm" type="video/webm">
+    </video>
+  </div>
+
+  <!-- Desktop Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 hidden lg:flex items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold">
+    <a href="../index.html" class="text-white/80 hover:text-white transition-colors">&lt;Home&gt;</a>
+    <a href="../about.html" class="text-white/80 hover:text-white transition-colors">&lt;About me&gt;</a>
+    <a href="../education.html" class="text-white/80 hover:text-white transition-colors">&lt;Education / Certifications&gt;</a>
+    <a href="../projects.html" class="nav-active">&lt;Projects&gt;</a>
+    <a href="../get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;get in touch&gt;</a>
+    <div class="flex items-center gap-2 ml-4">
+      <span class="text-white text-sm font-bold">EN</span>
+      <span class="text-white/30 text-sm">|</span>
+      <a href="../ro/projects/simple-linux.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">RO</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Top Bar -->
+  <div class="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 pt-5 pb-4">
+    <button onclick="toggleMenu()" class="glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+      <i class="fa-solid fa-bars text-lg"></i>
+    </button>
+    <span class="nav-active text-sm font-bold">&lt;Projects&gt;</span>
+  </div>
+
+  <!-- Mobile Fullscreen Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button onclick="toggleMenu()" class="absolute top-6 left-6 glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+    <a href="../index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Home&gt;</a>
+    <a href="../about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;About me&gt;</a>
+    <a href="../education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Education / Certifications&gt;</a>
+    <a href="../projects.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Projects&gt;</a>
+    <a href="../get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;get in touch&gt;</a>
+    <div class="absolute bottom-10 flex items-center gap-3">
+      <span class="text-white text-xl font-bold">EN</span>
+      <span class="text-white/30 text-xl">|</span>
+      <a href="../ro/projects/simple-linux.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">RO</a>
+    </div>
+  </div>
+
+  <div class="relative z-10 px-6 lg:px-16 xl:px-24 pt-24 pb-16 max-w-5xl mx-auto">
+
+    <!-- Titlu + GitHub -->
+    <div class="flex items-start justify-between mb-2">
+      <h1 class="text-2xl lg:text-5xl font-bold">Simple Linux</h1>
+      <a href="https://github.com/Dizzy123q/simple-linux" target="_blank" class="glass w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors flex-shrink-0">
+        <i class="fa-brands fa-github text-lg lg:text-xl"></i>
+      </a>
+    </div>
+
+    <!-- Anul -->
+    <p class="text-base lg:text-lg text-white/40 mb-6">2026</p>
+
+    <!-- Tehnologii -->
+    <div class="flex flex-wrap gap-2 lg:gap-3 mb-8">
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Python</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">pywebview</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">PyQt6</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">JavaScript</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">HTML / CSS</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Linux</span>
+    </div>
+
+    <!-- Carousel -->
+    <div class="glass overflow-hidden mb-10">
+      <div class="relative">
+        <div class="overflow-hidden">
+          <div class="carousel-track" id="carouselTrack">
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/home.png" alt="Home" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/home-manual.png" alt="Home Manual" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/services.png" alt="Services" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/environment.png" alt="Environment" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/logs.png" alt="Logs" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/logs-view.png" alt="Logs View" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/scheduled.png" alt="Scheduled" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/system-info.png" alt="System Info" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/settings.png" alt="Settings" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="simple-linux/screenshots/help.png" alt="Help" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full glass flex items-center justify-center text-white/70 hover:text-white transition-colors z-10">
+          <i class="fa-solid fa-chevron-left text-sm lg:text-base"></i>
+        </button>
+        <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 rounded-full glass flex items-center justify-center text-white/70 hover:text-white transition-colors z-10">
+          <i class="fa-solid fa-chevron-right text-sm lg:text-base"></i>
+        </button>
+
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" id="dots"></div>
+      </div>
+    </div>
+
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Features&gt;</h3>
+    <ul class="mb-12 flex flex-col gap-3">
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Man page viewer with DeepL translation — look up any command and translate selected text instantly</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Services dashboard — browse all systemd services with status, PID and ready-to-copy terminal commands</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>System logs — explore logs by category (System, Kernel, Auth, Boot, Applications) with search and line count control</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Scheduled tasks — view all systemd timers and cron jobs with their schedule and next run time</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Real-time system info — CPU, RAM, GPU, disk, network and uptime refreshed every 2 seconds</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Environment variables browser — search and copy any variable with one click</span>
+      </li>
+    </ul>
+
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Description&gt;</h3>
+    <p class="text-base lg:text-lg text-white/70 leading-relaxed mb-6">
+      Simple Linux started as a simple man page viewer. Over time it grew into a broader tool for exploring and understanding a Linux system — built for beginners, useful for everyone.
+    </p>
+    <p class="text-base lg:text-lg text-white/70 leading-relaxed mb-6">
+      The goal of the app is to serve as a starting point, not a permanent tool. It helps beginners understand their system visually first — and then gradually transition to using the terminal directly. Every piece of information shown in the app can also be obtained through terminal commands, and learning those commands is the natural next step.
+    </p>
+    <p class="text-base lg:text-lg text-white/70 leading-relaxed mb-6">
+      The app is built with Python on the backend and vanilla HTML, CSS and JavaScript on the frontend, connected through pywebview's JS bridge. The frontend is served by a local HTTP server running on port 8765, which avoids file:// protocol limitations and keeps the architecture simple. All system data is fetched through standard Linux CLI tools like systemctl, journalctl and man via subprocess — making the app reliable across different distributions without depending on Python libraries that may not be available everywhere.
+    </p>
+    <p class="text-base lg:text-lg text-white/70 leading-relaxed">
+      Process management was intentionally left out. Tools like htop and btop are the standard for this on Linux — they are faster, more powerful, and cannot be replaced by a graphical interface. Simple Linux encourages users to learn and use these tools directly.
+    </p>
+
+  </div>
+
+  <div class="relative z-10 px-6 lg:px-16 xl:px-24 pb-8 max-w-5xl mx-auto">
+    <p class="text-xs text-white/30 italic">*This project was built with the help of AI.</p>
+  </div>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const totalSlides = track.children.length;
+    let current = 0;
+
+    const dotsContainer = document.getElementById('dots');
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-white' : 'bg-white/30'}`;
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateDots() {
+      [...dotsContainer.children].forEach((dot, i) => {
+        dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === current ? 'bg-white' : 'bg-white/30'}`;
+      });
+    }
+
+    function goToSlide(index) {
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      updateDots();
+    }
+
+    function nextSlide() {
+      current = (current + 1) % totalSlides;
+      goToSlide(current);
+    }
+
+    function prevSlide() {
+      current = (current - 1 + totalSlides) % totalSlides;
+      goToSlide(current);
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script>
+    window.addEventListener('load', () => {
+      const video = document.getElementById('bgVideo');
+      video.muted = true;
+      video.play();
+    });
+  </script>
+</body>
+</html>
