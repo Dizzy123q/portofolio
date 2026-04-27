@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facial Recognition App - Hanganu Andrei Marian</title>
+<title>SSH Honeypot - Hanganu Andrei Marian</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -86,28 +86,52 @@
   .mobile-menu.open {
     transform: translateX(0);
   }
+
+  .slide-img-wrapper {
+    width: 100%;
+    height: 224px;
+    background: #0d0d0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .slide-img-wrapper { height: 384px; }
+  }
+
+  @media (min-width: 1024px) {
+    .slide-img-wrapper { height: 500px; }
+  }
+
+  .slide-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
 </style>
 </head>
 <body class="bg-[#0a1628] text-white min-h-screen overflow-x-hidden">
 
   <div class="video-bg">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="../video.mp4" type="video/mp4">
-      <source src="../video.webm" type="video/webm">
+      <source src="../../video.mp4" type="video/mp4">
+      <source src="../../video.webm" type="video/webm">
     </video>
   </div>
 
   <!-- Desktop Nav -->
   <nav class="fixed top-0 left-0 right-0 z-50 hidden lg:flex items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold">
-    <a href="../index.html" class="text-white/80 hover:text-white transition-colors">&lt;Home&gt;</a>
-    <a href="../about.html" class="text-white/80 hover:text-white transition-colors">&lt;About me&gt;</a>
-    <a href="../education.html" class="text-white/80 hover:text-white transition-colors">&lt;Education / Certifications&gt;</a>
-    <a href="../projects.html" class="nav-active">&lt;Projects&gt;</a>
-    <a href="../get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;get in touch&gt;</a>
+    <a href="../../ro/index.html" class="text-white/80 hover:text-white transition-colors">&lt;Home&gt;</a>
+    <a href="../../ro/about.html" class="text-white/80 hover:text-white transition-colors">&lt;Despre&gt;</a>
+    <a href="../../ro/education.html" class="text-white/80 hover:text-white transition-colors">&lt;Educație / Certificări&gt;</a>
+    <a href="../../ro/projects.html" class="nav-active">&lt;Proiecte&gt;</a>
+    <a href="../../ro/get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;Contact&gt;</a>
     <div class="flex items-center gap-2 ml-4">
-      <span class="text-white text-sm font-bold">EN</span>
+      <a href="../ssh-honeypot.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">EN</a>
       <span class="text-white/30 text-sm">|</span>
-      <a href="ro/facial-recognition-app-ro.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">RO</a>
+      <span class="text-white text-sm font-bold">RO</span>
     </div>
   </nav>
 
@@ -116,7 +140,7 @@
     <button onclick="toggleMenu()" class="glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
       <i class="fa-solid fa-bars text-lg"></i>
     </button>
-    <span class="nav-active text-sm font-bold">&lt;Projects&gt;</span>
+    <span class="nav-active text-sm font-bold">&lt;Proiecte&gt;</span>
   </div>
 
   <!-- Mobile Fullscreen Menu -->
@@ -124,15 +148,15 @@
     <button onclick="toggleMenu()" class="absolute top-6 left-6 glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
       <i class="fa-solid fa-xmark text-lg"></i>
     </button>
-    <a href="index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Home&gt;</a>
-    <a href="about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;About me&gt;</a>
-    <a href="education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Education / Certifications&gt;</a>
-    <a href="projects.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Projects&gt;</a>
-    <a href="get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;get in touch&gt;</a>
+    <a href="../../ro/index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Home&gt;</a>
+    <a href="../../ro/about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Despre&gt;</a>
+    <a href="../../ro/education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Educație / Certificări&gt;</a>
+    <a href="../../ro/projects.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Proiecte&gt;</a>
+    <a href="../../ro/get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Contact&gt;</a>
     <div class="absolute bottom-10 flex items-center gap-3">
-      <span class="text-white text-xl font-bold">EN</span>
+      <a href="../ssh-honeypot.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">EN</a>
       <span class="text-white/30 text-xl">|</span>
-      <a href="ro/index.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">RO</a>
+      <span class="text-white text-xl font-bold">RO</span>
     </div>
   </div>
 
@@ -140,22 +164,22 @@
 
     <!-- Titlu + GitHub -->
     <div class="flex items-start justify-between mb-2">
-      <h1 class="text-2xl lg:text-5xl font-bold">Facial Recognition App</h1>
-      <a href="https://github.com/Dizzy123q/Facial-Recognition-App" target="_blank" class="glass w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors flex-shrink-0">
+      <h1 class="text-2xl lg:text-5xl font-bold">SSH Honeypot</h1>
+      <a href="https://github.com/Dizzy123q/SSH-Honeypot.git" target="_blank" class="glass w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors flex-shrink-0">
         <i class="fa-brands fa-github text-lg lg:text-xl"></i>
       </a>
     </div>
 
     <!-- Anul -->
-    <p class="text-base lg:text-lg text-white/40 mb-6">2023</p>
+    <p class="text-base lg:text-lg text-white/40 mb-6">2025</p>
 
     <!-- Tehnologii -->
     <div class="flex flex-wrap gap-2 lg:gap-3 mb-8">
       <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Python</span>
-      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">PyQt5</span>
-      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">DeepFace</span>
-      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">OpenCV</span>
-      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">TensorFlow</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Docker</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Flask</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Paramiko</span>
+      <span class="text-xs lg:text-sm px-3 lg:px-4 py-1.5 lg:py-2 glass text-white/70">Debian 12</span>
     </div>
 
     <!-- Carousel -->
@@ -164,33 +188,22 @@
         <div class="overflow-hidden">
           <div class="carousel-track" id="carouselTrack">
 
-
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/menu.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="slide-img-wrapper">
+                <img src="../ssh-honeypot/screenshots/dashboard.png" alt="Dashboard" onerror="this.style.display='none';">
+              </div>
             </div>
 
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/webcam.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="slide-img-wrapper">
+                <img src="../ssh-honeypot/screenshots/sessions.png" alt="Sesiuni" onerror="this.style.display='none';">
+              </div>
             </div>
 
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/photo.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
-            </div>
-
-            <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/add.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="slide-img-wrapper">
+                <img src="../ssh-honeypot/screenshots/report.png" alt="Raport sesiune" onerror="this.style.display='none';">
+              </div>
             </div>
 
           </div>
@@ -207,29 +220,33 @@
       </div>
     </div>
 
-    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Features&gt;</h3>
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Funcționalități&gt;</h3>
     <ul class="mb-12 flex flex-col gap-3">
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Real-time face recognition via webcam using the VGG-Face model</span>
+        <span>Izolare Docker per atacator — fiecare sesiune rulează într-un container Debian 12 cu restricții de rețea</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Photo recognition — identify people from uploaded images</span>
+        <span>Analiză comportamentală automată — comenzile sunt clasificate în 10 categorii de atac cu scor de severitate per comandă</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Face highlight and name overlay on the live video feed</span>
+        <span>Reconstrucția fazelor de atac — mapare cronologică pe faze: Recunoaștere, Exploatare, Persistență și Curățare</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Identification history logged to an Excel file</span>
+        <span>Profilarea atacatorului — scor de expertiză și clasificare (Începător / Intermediar / Avansat / Expert)</span>
+      </li>
+      <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
+        <span class="text-white/40">•</span>
+        <span>Dashboard web — statistici în timp real, browser de sesiuni și rapoarte HTML forensice per sesiune</span>
       </li>
     </ul>
 
-    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Description&gt;</h3>
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Descriere&gt;</h3>
     <p class="text-base lg:text-lg text-white/70 leading-relaxed mb-8">
-      This desktop application was originally developed as my bachelor's thesis in 2023 and later modernized for my portfolio. It identifies people from a local photo database using facial recognition, either in real time through a webcam or from a static image. The original version was built with the <span class="text-white/90">face_recognition</span> library, which relied on dlib and was difficult to run on Linux. I rewrote the recognition engine using <span class="text-white/90">DeepFace</span> with the VGG-Face model, resolved Qt/OpenCV plugin conflicts, and redesigned the entire UI from scratch using PyQt5 with a modern dark theme. The app runs fully offline — no external API calls are made during recognition.
+      Un SSH honeypot high-interaction dezvoltat ca proiect de disertație în securitate cibernetică. Sistemul acceptă conexiuni SSH inbound indiferent de credențiale și rutează fiecare sesiune într-un container Docker dedicat cu un mediu Debian 12 realist — cu fișiere-capcană, utilizatori fictivi și un bash history pre-completat. Activitatea atacatorului este logată și procesată printr-un pipeline de analiză în două niveluri care reconstruiește timeline-ul atacului, clasifică comenzile în 10 categorii comportamentale, evaluează expertiza atacatorului și generează rapoarte HTML forensice per sesiune. Rezultatele sunt agregate într-un dashboard Flask cu distribuție geografică, distribuția categoriilor de atac și analiza pattern-urilor temporale.
     </p>
 
   </div>

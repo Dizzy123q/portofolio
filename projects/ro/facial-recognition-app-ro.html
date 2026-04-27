@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,22 +92,21 @@
 
   <div class="video-bg">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="../video.mp4" type="video/mp4">
-      <source src="../video.webm" type="video/webm">
+      <source src="../../video.mp4" type="video/mp4">
     </video>
   </div>
 
   <!-- Desktop Nav -->
   <nav class="fixed top-0 left-0 right-0 z-50 hidden lg:flex items-center gap-4 lg:gap-8 px-6 lg:px-16 xl:px-24 pt-4 lg:pt-5 pb-8 lg:pb-12 text-sm lg:text-base font-bold">
-    <a href="../index.html" class="text-white/80 hover:text-white transition-colors">&lt;Home&gt;</a>
-    <a href="../about.html" class="text-white/80 hover:text-white transition-colors">&lt;About me&gt;</a>
-    <a href="../education.html" class="text-white/80 hover:text-white transition-colors">&lt;Education / Certifications&gt;</a>
-    <a href="../projects.html" class="nav-active">&lt;Projects&gt;</a>
-    <a href="../get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;get in touch&gt;</a>
+    <a href="../../ro/index.html" class="text-white/80 hover:text-white transition-colors">&lt;Acasă&gt;</a>
+    <a href="../../ro/about.html" class="text-white/80 hover:text-white transition-colors">&lt;Despre mine&gt;</a>
+    <a href="../../ro/education.html" class="text-white/80 hover:text-white transition-colors">&lt;Educație / Certificări&gt;</a>
+    <a href="../../ro/projects.html" class="nav-active">&lt;Proiecte&gt;</a>
+    <a href="../../ro/get_in_touch.html" class="ml-auto text-white/80 hover:text-white transition-colors">&lt;contact&gt;</a>
     <div class="flex items-center gap-2 ml-4">
-      <span class="text-white text-sm font-bold">EN</span>
+      <a href="../facial-recognition-app.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">EN</a>
       <span class="text-white/30 text-sm">|</span>
-      <a href="ro/facial-recognition-app-ro.html" class="text-white/50 hover:text-white text-sm font-bold transition-colors">RO</a>
+      <span class="text-white text-sm font-bold">RO</span>
     </div>
   </nav>
 
@@ -116,7 +115,7 @@
     <button onclick="toggleMenu()" class="glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
       <i class="fa-solid fa-bars text-lg"></i>
     </button>
-    <span class="nav-active text-sm font-bold">&lt;Projects&gt;</span>
+    <span class="nav-active text-sm font-bold">&lt;Proiecte&gt;</span>
   </div>
 
   <!-- Mobile Fullscreen Menu -->
@@ -124,15 +123,15 @@
     <button onclick="toggleMenu()" class="absolute top-6 left-6 glass w-11 h-11 flex items-center justify-center text-white/70 hover:text-white transition-colors">
       <i class="fa-solid fa-xmark text-lg"></i>
     </button>
-    <a href="index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Home&gt;</a>
-    <a href="about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;About me&gt;</a>
-    <a href="education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Education / Certifications&gt;</a>
-    <a href="projects.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Projects&gt;</a>
-    <a href="get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;get in touch&gt;</a>
+    <a href="../../ro/index.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Acasă&gt;</a>
+    <a href="../../ro/about.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Despre mine&gt;</a>
+    <a href="../../ro/education.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;Educație / Certificări&gt;</a>
+    <a href="../../ro/projects.html" onclick="toggleMenu()" class="nav-active text-xl font-bold">&lt;Proiecte&gt;</a>
+    <a href="../../ro/get_in_touch.html" onclick="toggleMenu()" class="text-white/70 hover:text-white transition-colors text-xl font-bold">&lt;contact&gt;</a>
     <div class="absolute bottom-10 flex items-center gap-3">
-      <span class="text-white text-xl font-bold">EN</span>
+      <a href="../../projects/facial-recognition-app.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">EN</a>
       <span class="text-white/30 text-xl">|</span>
-      <a href="ro/index.html" onclick="toggleMenu()" class="text-white/50 hover:text-white text-xl font-bold transition-colors">RO</a>
+      <span class="text-white text-xl font-bold">RO</span>
     </div>
   </div>
 
@@ -164,33 +163,32 @@
         <div class="overflow-hidden">
           <div class="carousel-track" id="carouselTrack">
 
-
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/menu.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="../../projects/facial-recognition-app/screenshots/menu.png" alt="Meniu principal" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
             </div>
 
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/webcam.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="../../projects/facial-recognition-app/screenshots/webcam.png" alt="Recunoaștere video" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
             </div>
 
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/photo.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="../../projects/facial-recognition-app/screenshots/photo.png" alt="Recunoaștere foto" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
             </div>
 
             <div class="carousel-slide">
-                <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
-                    <img src="facial-recognition-app/screenshots/add.png" alt="Main menu" class="max-w-full max-h-full object-contain"
-                    onerror="this.style.display='none';">
-                </div>
+              <div class="w-full h-56 md:h-96 lg:h-[500px] bg-[#0d0d0f] flex items-center justify-center">
+                <img src="../../projects/facial-recognition-app/screenshots/add.png" alt="Adăugare în baza de date" class="max-w-full max-h-full object-contain"
+                  onerror="this.style.display='none';">
+              </div>
             </div>
 
           </div>
@@ -207,29 +205,29 @@
       </div>
     </div>
 
-    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Features&gt;</h3>
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Funcționalități&gt;</h3>
     <ul class="mb-12 flex flex-col gap-3">
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Real-time face recognition via webcam using the VGG-Face model</span>
+        <span>Recunoaștere facială în timp real prin webcam folosind modelul VGG-Face</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Photo recognition — identify people from uploaded images</span>
+        <span>Recunoaștere în poze — identifică persoane din imagini încărcate</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Face highlight and name overlay on the live video feed</span>
+        <span>Evidențierea feței și afișarea numelui peste feed-ul video live</span>
       </li>
       <li class="flex items-center gap-3 text-base lg:text-lg text-white/70">
         <span class="text-white/40">•</span>
-        <span>Identification history logged to an Excel file</span>
+        <span>Istoricul identificărilor salvat într-un fișier Excel</span>
       </li>
     </ul>
 
-    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Description&gt;</h3>
+    <h3 class="text-xs font-bold text-white/40 uppercase tracking-widest mb-4">&lt;Descriere&gt;</h3>
     <p class="text-base lg:text-lg text-white/70 leading-relaxed mb-8">
-      This desktop application was originally developed as my bachelor's thesis in 2023 and later modernized for my portfolio. It identifies people from a local photo database using facial recognition, either in real time through a webcam or from a static image. The original version was built with the <span class="text-white/90">face_recognition</span> library, which relied on dlib and was difficult to run on Linux. I rewrote the recognition engine using <span class="text-white/90">DeepFace</span> with the VGG-Face model, resolved Qt/OpenCV plugin conflicts, and redesigned the entire UI from scratch using PyQt5 with a modern dark theme. The app runs fully offline — no external API calls are made during recognition.
+      Această aplicație desktop a fost dezvoltată inițial ca lucrare de licență în 2023 și ulterior modernizată pentru portofoliu. Identifică persoane dintr-o bază de date locală cu fotografii folosind recunoaștere facială, fie în timp real prin webcam, fie dintr-o imagine statică. Versiunea originală a fost construită cu librăria <span class="text-white/90">face_recognition</span>, care depindea de dlib și era dificil de rulat pe Linux. Am rescris motorul de recunoaștere folosind <span class="text-white/90">DeepFace</span> cu modelul VGG-Face, am rezolvat conflictele dintre plugin-urile Qt și OpenCV și am redesenat complet interfața folosind PyQt5 cu o temă dark modernă. Aplicația rulează complet offline — niciun apel extern nu este făcut în timpul recunoașterii.
     </p>
 
   </div>
